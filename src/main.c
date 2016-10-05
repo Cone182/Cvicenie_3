@@ -79,7 +79,7 @@ int main(void)
 	gpioInitStruc.GPIO_Speed = GPIO_Speed_40MHz;
 
 	GPIO_Init(GPIOA, &gpioInitStruc);
-	GPIO_SetBits(GPIOA, GPIO_Pin_5);
+	//GPIO_SetBits(GPIOA, GPIO_Pin_5);
 
 	/* uloha  2 */
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
@@ -95,6 +95,8 @@ int main(void)
 	/* uloha 3 */
 	int inc=0;
 	int temp_inc = 0;
+	int x = 0;
+	int buttonState = 0;
 
   /* Infinite loop */
 
@@ -119,14 +121,32 @@ int main(void)
 	  }*/
 
 	  /* uloha 3 druha cast */
-	  if ((GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13)) == 0){
+	  /*if ((GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13)) == 0){
 		  GPIO_SetBits(GPIOA, GPIO_Pin_5);
 	  }
 	  else if ((GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13)) == 1) {
 		  GPIO_ResetBits(GPIOA, GPIO_Pin_5);
+	  }*/
+
+	  /* uloha 3 tretia cast */
+	  for (int cc=1; cc<= 5; cc++)
+	  {
+		  if ((GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13)) == 0) {
+			  temp_inc++;
+		  }
 	  }
-
-
+	  if (temp_inc > 2)
+	  {
+		  inc++;
+		  temp_inc = 0;
+	  }
+	  if (inc == 1)
+		  GPIO_SetBits(GPIOA, GPIO_Pin_5);
+	  else
+	  {
+		  GPIO_ResetBits(GPIOA, GPIO_Pin_5);
+		  inc = 0;
+	  }
   }
   return 0;
 }
