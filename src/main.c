@@ -107,7 +107,7 @@ int main(void)
 		  button = 0;*/
 
 	  /* uloha 3 prva cast */
-	  GPIO_SetBits(GPIOA, GPIO_Pin_5);
+	  /*GPIO_SetBits(GPIOA, GPIO_Pin_5);
 	  for (int c=1; c<= 1000; c++){
 		  for (int d=1; d<= 1000; d++)
 		  {}
@@ -116,7 +116,17 @@ int main(void)
 	  for (int c=1; c<= 1000; c++){
 		  for (int d=1; d<= 1000; d++)
 		  {}
+	  }*/
+
+	  /* uloha 3 druha cast */
+	  if ((GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13)) == 0){
+		  GPIO_SetBits(GPIOA, GPIO_Pin_5);
 	  }
+	  else if ((GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13)) == 1) {
+		  GPIO_ResetBits(GPIOA, GPIO_Pin_5);
+	  }
+
+
   }
   return 0;
 }
