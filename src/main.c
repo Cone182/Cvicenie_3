@@ -81,9 +81,24 @@ int main(void)
 	GPIO_Init(GPIOA, &gpioInitStruc);
 	GPIO_SetBits(GPIOA, GPIO_Pin_5);
 
+	/* uloha  2 */
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
+
+	gpioInitStruc.GPIO_Mode = GPIO_Mode_IN;
+	gpioInitStruc.GPIO_OType = GPIO_OType_PP;
+	gpioInitStruc.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	gpioInitStruc.GPIO_Pin = GPIO_Pin_13;
+
+	GPIO_Init(GPIOC, &gpioInitStruc);
+	int button;
+
   while (1)
   {
-
+	  /* uloha 2 */
+	  if ((GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13)) == 0)
+		  button = 1;
+	  else if ((GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13)) == 1)
+		  button = 0;
   }
   return 0;
 }
