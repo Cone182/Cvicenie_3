@@ -92,13 +92,31 @@ int main(void)
 	GPIO_Init(GPIOC, &gpioInitStruc);
 	int button;
 
+	/* uloha 3 */
+	int inc=0;
+	int temp_inc = 0;
+
+  /* Infinite loop */
+
   while (1)
   {
 	  /* uloha 2 */
-	  if ((GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13)) == 0)
+	  /*if ((GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13)) == 0)
 		  button = 1;
 	  else if ((GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13)) == 1)
-		  button = 0;
+		  button = 0;*/
+
+	  /* uloha 3 prva cast */
+	  GPIO_SetBits(GPIOA, GPIO_Pin_5);
+	  for (int c=1; c<= 1000; c++){
+		  for (int d=1; d<= 1000; d++)
+		  {}
+	  }
+	  GPIO_ResetBits(GPIOA, GPIO_Pin_5);
+	  for (int c=1; c<= 1000; c++){
+		  for (int d=1; d<= 1000; d++)
+		  {}
+	  }
   }
   return 0;
 }
