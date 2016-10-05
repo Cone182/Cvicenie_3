@@ -95,8 +95,6 @@ int main(void)
 	/* uloha 3 */
 	int inc=0;
 	int temp_inc = 0;
-	int x = 0;
-	int buttonState = 0;
 
   /* Infinite loop */
 
