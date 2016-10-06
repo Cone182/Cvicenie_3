@@ -107,12 +107,7 @@ int main(void)
 		  button = 0;*/
 
 	  /* uloha 3 prva cast */
-	  /*GPIO_SetBits(GPIOA, GPIO_Pin_5);
-	  for (int c=1; c<= 1000; c++){
-		  for (int d=1; d<= 1000; d++)
-		  {}
-	  }
-	  GPIO_ResetBits(GPIOA, GPIO_Pin_5);
+	  /*GPIO_ToggleBits(GPIOA, GPIO_Pin_5);
 	  for (int c=1; c<= 1000; c++){
 		  for (int d=1; d<= 1000; d++)
 		  {}
