@@ -100,6 +100,9 @@ int main(void)
 
   while (1)
   {
+	  /* uloha 1 prepinanie */
+	  //GPIO_ToggleBits(GPIOA, GPIO_Pin_5);
+
 	  /* uloha 2 */
 	  /*if ((GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13)) == 0)
 		  button = 1;
@@ -122,7 +125,7 @@ int main(void)
 	  }*/
 
 	  /* uloha 3 tretia cast */
-	  for (int cc=1; cc<= 5; cc++)
+	  /*for (int cc=1; cc<= 5; cc++)
 	  {
 		  if ((GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13)) == 0) {
 			  temp_inc++;
@@ -139,7 +142,7 @@ int main(void)
 	  {
 		  GPIO_ResetBits(GPIOA, GPIO_Pin_5);
 		  inc = 0;
-	  }
+	  }*/
   }
   return 0;
 }
