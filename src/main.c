@@ -93,8 +93,9 @@ int main(void)
 	int button;
 
 	/* uloha 3 */
-	int inc=0;
 	int temp_inc = 0;
+	int temp_inc2 = 0;
+	int buttonState = 0;
 
   /* Infinite loop */
 
@@ -125,24 +126,23 @@ int main(void)
 	  }*/
 
 	  /* uloha 3 tretia cast */
-	  /*for (int cc=1; cc<= 5; cc++)
-	  {
-		  if ((GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13)) == 0) {
-			  temp_inc++;
+	  if ((GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13)) == 0){
+		  temp_inc++;
+		  if (temp_inc > 5){
+		  		  temp_inc = 0;
+		  		  buttonState = 1;
 		  }
 	  }
-	  if (temp_inc > 2)
-	  {
-		  inc++;
-		  temp_inc = 0;
+	  if (buttonState ==1){
+		  if ((GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13)) == 1){
+			  temp_inc2++;
+			  if (temp_inc2 > 5){
+				  GPIO_ToggleBits(GPIOA, GPIO_Pin_5);
+				  temp_inc2 = 0;
+				  buttonState=0;
+			  }
+		  }
 	  }
-	  if (inc == 1)
-		  GPIO_SetBits(GPIOA, GPIO_Pin_5);
-	  else
-	  {
-		  GPIO_ResetBits(GPIOA, GPIO_Pin_5);
-		  inc = 0;
-	  }*/
   }
   return 0;
 }
@@ -150,6 +150,7 @@ int main(void)
 #ifdef  USE_FULL_ASSERT
 
 /**
+ *
   * @brief  Reports the name of the source file and the source line number
   *   where the assert_param error has occurred.
   * @param  file: pointer to the source file name
